@@ -17,7 +17,7 @@ exec mount $main /mnt
 
 # Installing System:
 echo "::Intalling the base system..."
-exec pacstrap /mnt base base-devl xorg xorg-server git vim grub alsa-utils
+exec pacstrap /mnt base base-devel xorg xorg-server git vim grub alsa-utils
 
 echo "::Running genfstab..."
 exec genfstab -U /mnt >> /mnt/etc/fstab
