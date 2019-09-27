@@ -8,7 +8,7 @@ read -p "Enter the swap partition (eg. /dev/sda2): " swap
 
 #Formating partitions
 echo "::Formatting Partitions..."
-exec mkdfs.ext4 $main
+exec mkfs.ext4 $main
 exec mkswap $swap
 exec swapon $swap
 
@@ -31,7 +31,7 @@ exec hwclock --systohc
 
 echo "::Uncomment wanted locales:"
 #exec vim /etc/locale.gen
-exec wget "https://raw.githubusercontent.com/HonoredTarget/ArchLinuxInstallScripts/master/supportFiles/locale.gen" -o locale.gen
+exec wget -O locale.gen "https://raw.githubusercontent.com/HonoredTarget/ArchLinuxInstallScripts/master/supportFiles/locale.gen" 
 exec mv locale.gen /etc/locale.gen
 exec locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
@@ -60,7 +60,7 @@ read -p "Enter username: " username
 exec useradd -m -g users -G wheel -s /bin/bash $username
 exec passwd $username
 
-exec wget "https://raw.githubusercontent.com/HonoredTarget/ArchLinuxInstallScripts/master/supportFiles/sudoers" -o sudoers
+exec wget -O sudoers "https://raw.githubusercontent.com/HonoredTarget/ArchLinuxInstallScripts/master/supportFiles/sudoers" 
 exec sudo mv sudoers /etc/sudoers
 
 #wget "https://raw.githubusercontent.com/HonoredTarget/ArchLinuxInstallScripts/master/supportScritps/i3.sh"
